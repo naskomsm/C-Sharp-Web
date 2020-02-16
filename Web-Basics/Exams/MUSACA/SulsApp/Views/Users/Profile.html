@@ -1,0 +1,29 @@
+﻿<div class="row justify-content-center">
+    <h1>Greetings, @Model.User.Username!</h1>
+</div>
+
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Total</th>
+            <th scope="col">Issued On</th>
+            <th scope="col">Cashier</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var receipt in @Model.Receipts)
+        {
+            <tr>
+                <th scope="row">@receipt.Id</th>
+                <td>@receipt.Total</td>
+                <td>@receipt.IssuedOn</td>
+                <td>@receipt.CashierName</td>
+                <td><a class="btn btn-primary" href="/Receipts/Details" role="button">Details</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

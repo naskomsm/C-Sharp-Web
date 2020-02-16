@@ -1,0 +1,49 @@
+﻿<main class="mt-3">
+    <div class="row">
+        <form class="form-inline" method="post" action="/Orders/Create">
+            <div class="form-group mb-2">
+                <label for="staticProduct" class="sr-only">Product</label>
+                <input type="text" readonly class="form-control-plaintext" id="staticProduct" value="Product">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="Barcode" class="sr-only">Barcode</label>
+                <input type="text" class="form-control" id="Barcode" placeholder="Barcode..." name="barcode">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="Quantity" class="sr-only">Quantity</label>
+                <input type="text" class="form-control" id="Quantity" placeholder="Quantity..." name="quantity">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Order</button>
+        </form>
+    </div>
+
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var order in Model.Orders)
+                {
+                    <tr>
+                        <th>@order.ProductName</th>
+                        <td>x@order.Quantity</td>
+                        <td>$@order.Price</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <form class="form-inline" method="post" action="/Receipts/Create">
+           <button type="submit" class="btn btn-primary mb-2">Cashout</button>
+        </form>
+    </div>
+
+    <div class="row">Total: $@Model.Total</div>
+</main>
